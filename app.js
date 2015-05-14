@@ -2,7 +2,7 @@ var Path = require('path'),
     Hapi = require('hapi'),
     Good = require('good');
 
-// var routes = require('./routes/index');
+var routes = require('./routes/index');
 
 var server = new Hapi.Server();
 
@@ -11,13 +11,7 @@ server.connection({
   port: 3000
 })
 
-server.route({
-  method: 'GET',
-  path: '/',
-  handler: function(request, reply) {
-    reply.redirect('http://www.seanowiecki.com/Odyssey-client/');
-  }
-});
+server.route(routes);
 
 server.register({
   register: Good,
