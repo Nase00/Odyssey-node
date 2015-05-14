@@ -1,9 +1,15 @@
-var express = require('express');
-var router = express.Router();
+var Path = require('path'),
+		Hapi = require('hapi'),
+		Good = require('good');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.redirect('http://www.seanowiecki.com/Odyssey-client/');
-});
+// http://www.seanowiecki.com/Odyssey-client/
 
-module.exports = router;
+routes = {
+  method: 'GET',
+  path: '/',
+  handler: function(request, reply) {
+    reply.redirect('http://www.seanowiecki.com/Odyssey-client/');
+  }
+}
+
+module.exports = routes
