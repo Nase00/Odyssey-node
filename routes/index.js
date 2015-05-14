@@ -1,9 +1,17 @@
-var express = require('express');
-var router = express.Router();
+var Path = require('path'),
+		Hapi = require('hapi'),
+		Good = require('good'),
+		controllers= require('../controllers/index.js')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.redirect('http://www.seanowiecki.com/Odyssey-client/');
-});
-
-module.exports = router;
+module.exports = [
+	{
+	  method: 'GET',
+	  path: '/',
+	  config: controllers.redirectToApp
+	},
+	{
+	  method: 'GET',
+	  path: '/test',
+	  config: controllers.displayTest
+	}
+];
