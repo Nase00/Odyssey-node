@@ -7,7 +7,7 @@ var stationSchema = new Schema({
 		required: true,
 		unique: true
 	},
-	station_id: {
+	stationId: {
 		type: Number,
 		required: true,
 		unique: true
@@ -25,21 +25,47 @@ var stationSchema = new Schema({
 var Station = mongoose.model('Station', stationSchema);
 
 var tripSchema = new Schema({
-	lat: {
+	tripId: {
 		type: Number,
 		required: true,
 		unique: true
 	},
-	lng: {
+	bikeId: {
 		type: Number,
-		required: true,
-		unique: true
+		required: true
 	},
-	trip_id: {
-		type: Number,
-		required: true,
-		unique: true
+	startTime: {
+		type: String,
+		required: true
 	},
+	stopTime: {
+		type: String,
+		required: true
+	},
+	tripDuration: {
+		type: Number
+	},
+	originStationId: {
+		type: Number
+	},
+	originStationName: {
+		type: String
+	},
+	destinationStationId: {
+		type: Number
+	},
+	destinationStationName: {
+		type: String
+	},
+	userType: {
+		type: String
+	},
+	gender: {
+		type: String
+	},
+	birthday: {
+		type: String
+	}
 })
 
 var Trip = mongoose.model('Trip', tripSchema);

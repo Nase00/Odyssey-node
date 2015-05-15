@@ -38,3 +38,5 @@ server.register({
 server.start(function() {
   console.log('Running at ' + server.info.uri)
 });
+
+// Mongoose.connection.db.dropDatabase();
