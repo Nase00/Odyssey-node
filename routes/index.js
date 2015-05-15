@@ -1,7 +1,7 @@
 var Path = require('path'),
 		Hapi = require('hapi'),
 		Good = require('good'),
-		controllers= require('../controllers/index.js')
+		controllers = require('../controllers/index.js');
 
 module.exports = [
 	{
@@ -11,7 +11,7 @@ module.exports = [
 	},
 	{
 	  method: 'GET',
-	  path: '/test',
-	  config: controllers.displayTest
+	  path: '/trip_for/{tripId}/after/{offset}',
+	  config: controllers.displayTrip
 	}
 ];

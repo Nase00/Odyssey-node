@@ -4,10 +4,16 @@
   "private": true,
   "main": "app.js",
   "dependencies": {
+    "csv": "^0.4.2",
     "debug": "~2.1.1",
+    "fast-csv": "^0.6.0",
     "good": "^6.1.2",
     "good-console": "^5.0.0",
     "hapi": "^8.4.0",
+    "mongoose": "^4.0.3",
     "serve-favicon": "~2.2.0"
+  },
+  "devDependencies": {
+    "csv-parse": "^0.1.1"
   }
 }
