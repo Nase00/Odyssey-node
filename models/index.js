@@ -34,11 +34,11 @@ var tripSchema = new Schema({
 		required: true
 	},
 	startTime: {
-		type: String,
+		type: Date,
 		required: true
 	},
 	stopTime: {
-		type: String,
+		type: Date,
 		required: true
 	},
 	tripDuration: {

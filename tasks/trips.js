@@ -20,12 +20,13 @@ module.exports = function() {
           var trip = new models.Trip({
             tripId: data.trip_id,
             bikeId: data.bikeid,
-            startTime: data.starttime,
-            stopTime: data.stoptime,
+            startTime: Date.parse(data.starttime),
+            stopTime: Date.parse(data.stoptime),
             originStationId: data.from_station_id,
             originStationName: data.from_station_name,
             destinationStationId: data.to_station_id,
             destinationStationName: data.to_station_name,
+            tripDuration: data.tripduration
           })
           trip.save(function (err) {
             console.log("Saved " + trip)
