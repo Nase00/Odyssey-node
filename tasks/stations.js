@@ -3,30 +3,31 @@ var Mongoose = require('mongoose'),
 		csv = require('fast-csv'),
 		fs = require('fs');
 
-var config = require('../data/csv/config'),
-    tasks = require('./index').list;
+var config = require('../data/csv/config');
 
 module.exports = function() {
-  Mongoose.connect('localhost', 'stationSeeding');
+  Mongoose.connect('mongodb://localhost');
   var collection = [];
 	var stream = fs.createReadStream(config.files.stations[0]),
         csvStream = csv(config.options.stations)
       .on("data", function(data){
         collection.push(data);
+        console.log("Parsing station #" + data.trip_id)
       })
       .on("end", function() {
         collection.map(function(data) {
-          models.Station.create({
+          var station = new models.Station({
             stationId: data.id,
             name: data.name,
             lat: data.latitude,
             lng: data.longitude
-          }, function (err, small) {
-            if (err) console.log(err);
           });
+          station.save(function (err) {
+            console.log("Saved " + station)
+            if (err) console.log(err);
+          })
         });
-        console.log("Done seeding " + tasks[0]);
       });
     stream.pipe(csvStream);
-    Mongoose.connection.close();
+    // Mongoose.connection.close();
 }
