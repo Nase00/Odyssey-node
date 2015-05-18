@@ -27,7 +27,6 @@ var Station = mongoose.model('Station', stationSchema);
 var tripSchema = new Schema({
 	tripId: {
 		type: Number,
-		required: true,
 		unique: true
 	},
 	bikeId: {
@@ -43,19 +42,23 @@ var tripSchema = new Schema({
 		required: true
 	},
 	tripDuration: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	originStationId: {
 		type: Number
 	},
 	originStationName: {
-		type: String
+		type: String,
+		required: true
 	},
 	destinationStationId: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	destinationStationName: {
-		type: String
+		type: String,
+		required: true
 	},
 	userType: {
 		type: String
