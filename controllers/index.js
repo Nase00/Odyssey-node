@@ -1,19 +1,15 @@
-var models = require('../models/index'),
-		getTrips = require('./get-trips');
+var models = require('../models/index');
 
 module.exports = {
 	redirectToApp: {
-		handler: function(request, reply) {
+		handler: function(req, reply) {
 	    reply.redirect('http://www.seanowiecki.com/Odyssey-client/');
 	  }
 	},
 	displayTrip: {
-		handler: function(request, reply) {
-			var find = models.Trip.find({
-				trip_id: 12345
-			})
-			reply(find)
-	    // reply(getTrips(request.params.tripId, request.params.offset));
+		handler: function(req, reply) {
+			var query = models.Trip.find({bikeId: req.params.bikeId}).skip(req.params.offset).limit(1)
+	  	reply(query)
 	  }
 	}
 }

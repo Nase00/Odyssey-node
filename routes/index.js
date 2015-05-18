@@ -11,7 +11,7 @@ module.exports = [
 	},
 	{
 	  method: 'GET',
-	  path: '/trip_for/{tripId}/after/{offset}',
+	  path: '/trip_for/{bikeId}/after/{offset}',
 	  config: controllers.displayTrip
 	}
 ];
