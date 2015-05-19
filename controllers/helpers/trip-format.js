@@ -1,4 +1,5 @@
-var models = require('../../models/index');
+var models = require('../../models/index'),
+		moment = require('moment');
 
 var findTrip = function(req, reply) {
 	// Lookup bike's trips
@@ -29,8 +30,8 @@ var findTrip = function(req, reply) {
 															"lat": station.lat,
 															"lng": station.lng,
 															"trip_id": trip.tripId,
-															"start_time": trip.startTime,
-															"stop_time": trip.stopTime,
+															"start_time": moment(trip.startTime).format('MMMM Do YYYY, h:mm a'),
+															"stop_time": moment(trip.stopTime).format('MMMM Do YYYY, h:mm a'),
 															"duration": trip.duration,
 															"start_location": trip.originStationName,
 															"stop_location": trip.destinationStationName
