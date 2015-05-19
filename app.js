@@ -4,7 +4,9 @@ var Path = require('path'),
     Mongoose = require('mongoose'),
     db = require('./config/db');
 
-Mongoose.connect('mongodb://localhost');
+var dbURI = process.env.PROD_DB_URI || 'mongodb://localhost';
+
+Mongoose.connect(dbURI);
 
 var routes = require('./routes/index');
 
