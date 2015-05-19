@@ -5,6 +5,11 @@ var Path = require('path'),
 
 module.exports = [
 	{
+		path: '/favicon.ico',
+	  method: 'GET',
+	  handler: { file: './favicon.ico' }
+	},
+	{
 	  method: 'GET',
 	  path: '/',
 	  config: controllers.redirectToApp

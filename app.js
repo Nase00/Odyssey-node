@@ -3,9 +3,8 @@ var Hapi = require('hapi'),
 
 var dbURI = process.env.PROD_MONGODB || 'mongodb://localhost';
 
-var routes = require('./routes/index');
-
-var server = new Hapi.Server();
+var server = new Hapi.Server(),
+    routes = require('./routes/index');
 
 server.connection({
   port: process.env.PORT || 3000,
