@@ -4,7 +4,7 @@ var Path = require('path'),
     Mongoose = require('mongoose'),
     db = require('./config/db');
 
-var dbURI = process.env.PROD_DB_URI || 'mongodb://localhost';
+var dbURI = process.env.PROD_MONGODB || 'mongodb://localhost';
 
 Mongoose.connect(dbURI);
 
@@ -14,7 +14,7 @@ var server = new Hapi.Server();
 
 server.connection({
   host: 'localhost',
-  port: 3000
+  port: process.env.PORT || 3000
 })
 
 server.route(routes);

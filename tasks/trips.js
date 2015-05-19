@@ -4,7 +4,7 @@ var Mongoose = require('mongoose'),
 		fs = require('fs');
 
 var config = require('../data/csv/config'),
-    file = process.argv.slice(3)[0];;
+    file = process.argv.slice(3)[0];
 
 module.exports = function() {
   Mongoose.connect('mongodb://localhost');
