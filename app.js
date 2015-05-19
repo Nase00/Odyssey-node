@@ -1,5 +1,4 @@
-var Path = require('path'),
-    Hapi = require('hapi'),
+var Hapi = require('hapi'),
     Good = require('good'),
     Mongoose = require('mongoose');
 

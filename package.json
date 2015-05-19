@@ -12,7 +12,9 @@
     "serve-favicon": "~2.2.0"
   },
   "devDependencies": {
-    "csv": "^0.4.2",
     "fast-csv": "^0.6.0"
+  },
+  "engines": {
+    "node": ">=0.12.x"
   }
 }
