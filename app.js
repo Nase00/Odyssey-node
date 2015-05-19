@@ -1,12 +1,9 @@
 var Path = require('path'),
     Hapi = require('hapi'),
     Good = require('good'),
-    Mongoose = require('mongoose'),
-    db = require('./config/db');
+    Mongoose = require('mongoose');
 
 var dbURI = process.env.PROD_MONGODB || 'mongodb://localhost';
-
-Mongoose.connect(dbURI);
 
 var routes = require('./routes/index');
 
@@ -37,5 +34,6 @@ server.register({
 });
 
 server.start(function() {
+  Mongoose.connect(dbURI);
   console.log('Running at ' + server.info.uri)
 });
