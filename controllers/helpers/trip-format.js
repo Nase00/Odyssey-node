@@ -4,7 +4,7 @@ var models = require('../../models/index'),
 var findTrip = function(req, reply) {
 	// Lookup bike's trips
 	models.Trip.findOne({bikeId: req.params.bikeId})
-				.sort('-startTime')
+				.sort( {"startTime":1 })
 				.skip(req.params.offset)
 				.limit(1)
 				.exec(function(err, trip) {
