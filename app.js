@@ -1,5 +1,4 @@
 var Hapi = require('hapi'),
-    Good = require('good'),
     Mongoose = require('mongoose');
 
 var dbURI = process.env.PROD_MONGODB || 'mongodb://localhost';
@@ -9,28 +8,11 @@ var routes = require('./routes/index');
 var server = new Hapi.Server();
 
 server.connection({
-  host: 'localhost',
-  port: process.env.PORT || 3000
-})
+  port: process.env.PORT || 3000,
+  host: '0.0.0.0'
+});
 
 server.route(routes);
-
-server.register({
-  register: Good,
-  options: {
-    reporters: [{
-      reporter: require('good-console'),
-      events: {
-        response: '*',
-        log: '*'
-      }
-    }]
-  }
-}, function (err) {
-  if (err) {
-    throw err;
-  }
-});
 
 server.start(function() {
   Mongoose.connect(dbURI);
