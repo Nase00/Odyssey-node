@@ -13,12 +13,12 @@ module.exports = function() {
           csvStream = csv(config.options.stations)
         .on("data", function(data){
           collection.push(data);
-          console.log("Parsing station #" + data.trip_id)
+          console.log("Parsing station #" + data.id)
         })
         .on("end", function() {
           collection.map(function(data) {
             var station = new models.Station({
-              stationId: data.id,
+              id: data.id,
               name: data.name,
               lat: data.latitude,
               lng: data.longitude
@@ -31,5 +31,4 @@ module.exports = function() {
         });
       stream.pipe(csvStream);
   }
-    // Mongoose.connection.close();
 }

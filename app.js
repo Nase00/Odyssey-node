@@ -17,3 +17,7 @@ server.start(function() {
   Mongoose.connect(dbURI);
   console.log('Running at ' + server.info.uri)
 });
+
+module.exports = {
+  dbURI: dbURI
+}

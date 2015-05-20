@@ -7,7 +7,7 @@ var stationSchema = new Schema({
 		required: true,
 		unique: true
 	},
-	stationId: {
+	id: {
 		type: Number,
 		required: true,
 		unique: true
@@ -25,7 +25,7 @@ var stationSchema = new Schema({
 var Station = mongoose.model('Station', stationSchema);
 
 var tripSchema = new Schema({
-	tripId: {
+	id: {
 		type: Number,
 		unique: true
 	},

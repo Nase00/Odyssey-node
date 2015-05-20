@@ -18,7 +18,7 @@ module.exports = function() {
       .on("end", function() {
         collection.map(function(data) {
           var trip = new models.Trip({
-            tripId: data.trip_id,
+            id: data.trip_id,
             bikeId: data.bikeid,
             startTime: Date.parse(data.starttime),
             stopTime: Date.parse(data.stoptime),

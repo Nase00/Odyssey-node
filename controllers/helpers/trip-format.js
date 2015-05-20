@@ -22,14 +22,14 @@ var findTrip = function(req, reply) {
 						})
 					// Return trip with station coordinates
 					} else {
-						models.Station.findOne({stationId: trip.originStationId})
+						models.Station.findOne({id: trip.originStationId})
 													.limit(1)
 													.exec(function(err, station) {
 														reply({
 															"status": 200,
 															"lat": station.lat,
 															"lng": station.lng,
-															"trip_id": trip.tripId,
+															"trip_id": trip.id,
 															"start_time": moment(trip.startTime).format('MMMM Do YYYY, h:mm a'),
 															"stop_time": moment(trip.stopTime).format('MMMM Do YYYY, h:mm a'),
 															"duration": trip.duration,

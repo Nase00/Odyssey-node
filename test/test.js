@@ -8,8 +8,7 @@ var dbURI = require('../app').dbURI,
 // Mongoose.connect(dbURI);
 
 describe('Trip', function() {
-	it('has an id', function() {
-		var testTrip = new Trip({
+	var testTrip = new Trip({
 			id: 2160196,
       bikeId: 100,
       startTime: Date.parse('6/30/2014 23:57,7/1/2014 0:07'),
@@ -20,10 +19,10 @@ describe('Trip', function() {
       destinationStationName: 'May St & Taylor St',
       tripDuration: 1992
 		})
-		console.log(testTrip)
+	it('has an id', function() {
 		assert.equal(2160196, testTrip.id);
+	})
+	it('has a bikeId', function() {
 		assert.equal(100, testTrip.bikeId);
-		assert.equal(1, testTrip.startTime);
-		assert.equal(1, testTrip.stopTime);
 	})
 })
