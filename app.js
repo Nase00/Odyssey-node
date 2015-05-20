@@ -11,7 +11,7 @@ server.connection({
   host: '0.0.0.0',
   routes: {
   	cors: {
-  		origin: ['null'],
+  		origin: ['null', 'http://www.seanowiecki.com'],
   		credentials: true,
   		override: false
   	}
