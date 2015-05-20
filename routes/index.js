@@ -1,6 +1,5 @@
 var Path = require('path'),
 		Hapi = require('hapi'),
-		Good = require('good'),
 		controllers = require('../controllers/index.js');
 
 module.exports = [
