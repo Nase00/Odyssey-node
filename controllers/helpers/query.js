@@ -27,6 +27,7 @@ var findTrip = function(req, reply) {
 													.exec(function(err, station) {
 														reply({
 															"status": 200,
+															"bike_id": trip.bikeId,
 															"lat": station.lat,
 															"lng": station.lng,
 															"trip_id": trip.id,
@@ -41,4 +42,18 @@ var findTrip = function(req, reply) {
 				})
 };
 
-module.exports = findTrip;
+var findBike = function(req, reply) {
+	models.Trip.findOne({id: req.params.tripId})
+		.exec(function(err, trip) {
+			if (!trip) {
+				reply('Not found.')
+			} else {
+				reply(trip.bikeId)
+			}
+		})
+};
+
+module.exports = {
+	findTrip: findTrip,
+	findBike: findBike
+};

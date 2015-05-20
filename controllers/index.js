@@ -1,5 +1,5 @@
 var models = require('../models/index'),
-		tripResponse = require('./helpers/trip-format');
+		query = require('./helpers/query');
 
 module.exports = {
 	redirectToApp: {
@@ -7,9 +7,14 @@ module.exports = {
 	    reply.redirect('http://www.seanowiecki.com/Odyssey-client/');
 	  }
 	},
-	displayTrip: {
+	findTrip: {
 		handler: function(req, reply) {
-	  	tripResponse(req, reply);
+	  	query.findTrip(req, reply);
 	  }
+	},
+	findBike: {
+		handler: function(req, reply) {
+			query.findBike(req, reply);
+		}
 	}
 }

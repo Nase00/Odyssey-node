@@ -1,5 +1,4 @@
-var Path = require('path'),
-		Hapi = require('hapi'),
+var Hapi = require('hapi'),
 		controllers = require('../controllers/index.js');
 
 module.exports = [
@@ -16,6 +15,11 @@ module.exports = [
 	{
 	  method: 'GET',
 	  path: '/trip_for/{bikeId}/after/{offset}',
-	  config: controllers.displayTrip
+	  config: controllers.findTrip
+	},
+	{
+		method: 'GET',
+		path: '/bike_for/{tripId}',
+		config: controllers.findBike
 	}
 ];
