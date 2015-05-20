@@ -9,7 +9,9 @@
     "mongoose": "^4.0.3"
   },
   "devDependencies": {
-    "fast-csv": "^0.6.0"
+    "fast-csv": "^0.6.0",
+    "mocha": "^2.2.5",
+    "should": "^6.0.3"
   },
   "engines": {
     "node": ">=0.12.x"
