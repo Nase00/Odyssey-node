@@ -11,28 +11,25 @@ module.exports = function() {
   var collection = [];
 	var stream = fs.createReadStream(config.files.trips[file]),
         csvStream = csv(config.options.trips)
-      .on("data", function(data){
-        collection.push(data);
-        console.log("Parsing trip #" + data.trip_id)
+      .on("data", function(data) {
+        var trip = new models.Trip({
+          id: data.trip_id,
+          bikeId: data.bikeid,
+          startTime: Date.parse(data.starttime),
+          stopTime: Date.parse(data.stoptime),
+          originStationId: data.from_station_id,
+          originStationName: data.from_station_name,
+          destinationStationId: data.to_station_id,
+          destinationStationName: data.to_station_name,
+          tripDuration: data.tripduration
+        })
+        trip.save(function (err) {
+          console.log("Saved " + trip)
+          if (err) console.log(err);
+        })
       })
       .on("end", function() {
-        collection.map(function(data) {
-          var trip = new models.Trip({
-            id: data.trip_id,
-            bikeId: data.bikeid,
-            startTime: Date.parse(data.starttime),
-            stopTime: Date.parse(data.stoptime),
-            originStationId: data.from_station_id,
-            originStationName: data.from_station_name,
-            destinationStationId: data.to_station_id,
-            destinationStationName: data.to_station_name,
-            tripDuration: data.tripduration
-          })
-          trip.save(function (err) {
-            console.log("Saved " + trip)
-            if (err) console.log(err);
-          })
-        });
+        console.log('Done! Ctrl+C to quit.')
       });
     stream.pipe(csvStream);
     // Mongoose.connection.close();
