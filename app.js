@@ -8,7 +8,14 @@ var server = new Hapi.Server(),
 
 server.connection({
   port: process.env.PORT || 3000,
-  host: '0.0.0.0'
+  host: '0.0.0.0',
+  routes: {
+  	cors: {
+  		origin: ['null'],
+  		credentials: true,
+  		override: false
+  	}
+	}
 });
 
 server.route(routes);
