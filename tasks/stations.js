@@ -4,9 +4,10 @@ var Mongoose = require('mongoose'),
 		fs = require('fs');
 
 var config = require('../data/csv/config');
+var dbURI = process.env.MONGOLAB_URI || 'mongodb://localhost';
 
 module.exports = function() {
-  Mongoose.connect('mongodb://localhost');
+  Mongoose.connect(dbURI);
   var collection = [];
   for (var i = 0; i < config.files.stations.length; i++) {
   	var stream = fs.createReadStream(config.files.stations[i]),

@@ -5,9 +5,10 @@ var Mongoose = require('mongoose'),
 
 var config = require('../data/csv/config'),
     file = process.argv.slice(3)[0];
+var dbURI = process.env.MONGOLAB_URI || 'mongodb://localhost';
 
 module.exports = function() {
-  Mongoose.connect('mongodb://localhost');
+  Mongoose.connect(dbURI);
   var collection = [];
 	var stream = fs.createReadStream(config.files.trips[file]),
         csvStream = csv(config.options.trips)
