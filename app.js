@@ -1,7 +1,7 @@
 var Hapi = require('hapi'),
     Mongoose = require('mongoose');
 
-var dbURI = process.env.PROD_MONGODB || 'mongodb://localhost';
+var dbURI = process.env.MONGOLAB_URI || 'mongodb://localhost';
 
 var server = new Hapi.Server(),
     routes = require('./routes/index');
