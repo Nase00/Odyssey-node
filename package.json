@@ -3,13 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "seed-trips": "node seed trips"
+  },
   "dependencies": {
     "hapi": "^8.4.0",
     "moment": "^2.10.3",
-    "mongoose": "^4.0.3"
+    "mongoose": "^4.0.3",
+    "fast-csv": "^0.6.0",
   },
   "devDependencies": {
-    "fast-csv": "^0.6.0",
     "mocha": "^2.2.5",
     "should": "^6.0.3"
   },
