@@ -5,7 +5,7 @@ module.exports = [
 	{
 		path: '/favicon.ico',
 	  method: 'GET',
-	  handler: { file: './favicon.ico' }
+	  handler: { file: '../favicon.ico' }
 	},
 	{
 	  method: 'GET',
