@@ -1,28 +1,34 @@
-var Hapi = require('hapi'),
-    Mongoose = require('mongoose');
+const Hapi = require('hapi');
+const Inert = require('inert');
+const Mongoose = require('mongoose');
 
-var dbURI = process.env.MONGOLAB_URI || 'mongodb://localhost';
+const dbURI = process.env.MONGOLAB_URI || 'mongodb://localhost';
 
-var server = new Hapi.Server(),
-    routes = require('./routes/index');
+const server = new Hapi.Server();
+const routes = require('./routes/index');
 
-server.connection({
+const connectionConfig = {
   port: process.env.PORT || 3000,
   host: '0.0.0.0',
   routes: {
   	cors: {
   		origin: ['null', 'http://www.seanowiecki.com'],
-  		credentials: true,
-  		override: false
+  		credentials: true
   	}
 	}
-});
+};
 
+server.connection(connectionConfig);
+server.register(Inert, () => {});
 server.route(routes);
 
-server.start(function() {
+server.start((err) => {
+  if (err) {
+    throw err;
+  }
+
   Mongoose.connect(dbURI);
-  console.log('Running at ' + server.info.uri)
+  console.log(`Running at ${server.info.uri}`);
 });
 
 module.exports = {
