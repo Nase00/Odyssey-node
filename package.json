@@ -12,7 +12,8 @@
     "hapi": "^13.2.2",
     "inert": "^3.2.0",
     "moment": "^2.12.0",
-    "mongoose": "^4.4.10"
+    "mongoose": "^4.4.10",
+    "ms": "^0.7.1"
   },
   "devDependencies": {
     "mocha": "^2.2.5",
