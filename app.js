@@ -11,11 +11,11 @@ const connectionConfig = {
   port: process.env.PORT || 3000,
   host: '0.0.0.0',
   routes: {
-  	cors: {
-  		origin: ['null', 'http://www.seanowiecki.com'],
-  		credentials: true
-  	}
-	}
+    cors: {
+      origin: ['*'],
+      credentials: true
+    }
+  }
 };
 
 server.connection(connectionConfig);

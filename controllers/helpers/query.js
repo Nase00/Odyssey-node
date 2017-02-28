@@ -5,7 +5,7 @@ const findTrip = (req, reply) => {
   // Lookup bike's trips
   models.Trip.findOne({ bikeId: req.params.bikeId })
     // .sort({ startTime: 1 })
-    .skip(req.params.offset)
+    .skip(parseInt(req.params.offset, 10))
     .limit(1)
     .exec((err, trip) => {
       // Bike must have zero trips
